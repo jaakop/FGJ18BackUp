@@ -8,15 +8,23 @@ public class ItemHandler : MonoBehaviour
     public static Item Item;
     public static Pipe ActivePipe;
 
-    public bool Gun = false;
-    
     [SerializeField]
     private TextMeshProUGUI Name;
+    [SerializeField]
+    private AudioSource SteamPlayer;
     
     private Vector3 GetDirection (Vector3 a, Vector3 b)
     {
         var direction = b - a;
         return direction.magnitude < 1 ? direction : direction.normalized;
+    }
+
+    public void SetSteamPlaying (bool state)
+    {
+        if (state)
+            SteamPlayer.Play();
+        else
+            SteamPlayer.Stop();
     }
 
     public void Update()
@@ -85,6 +93,12 @@ public class ItemHandler : MonoBehaviour
                     ActivePipe.SetFixed();
                     ActivePipe = null;
                     Item = null;
+
+                    if (GameObject.FindGameObjectsWithTag("Objective").Length <= 0)
+                    {
+                        SetSteamPlaying(false);
+                    }
+
                     return;
                 }
 
@@ -124,7 +138,7 @@ public class ItemHandler : MonoBehaviour
                 }
             }
 
-            Item.GetComponent<Rigidbody>().velocity = GetDirection(Item.transform.position, transform.position + transform.forward * 8) * 20;
+            Item.GetComponent<Rigidbody>().velocity = GetDirection(Item.transform.position, transform.position + transform.forward * 8) * 40;
         }       
     }
 }

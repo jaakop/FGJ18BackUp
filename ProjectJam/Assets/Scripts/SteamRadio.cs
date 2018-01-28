@@ -9,9 +9,5 @@ public class SteamRadio : MonoBehaviour
         {
             SceneManager.LoadScene(2);
         }
-        else
-        {
-            // Notify
-        }
     }
 }

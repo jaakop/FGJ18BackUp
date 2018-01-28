@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 54560175101127424}
   - component: {fileID: 114176115182062672}
   - component: {fileID: 65401771654495294}
+  - component: {fileID: 82052724478534438}
   m_Layer: 8
   m_Name: Mouse
   m_TagString: Mouse
@@ -373,6 +374,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.069363, y: 3.4248044, z: 6.3186154}
   m_Center: {x: -0.0071581565, y: 1.2124016, z: 2.0923107}
+--- !u!82 &82052724478534438
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780215596488992}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8faec51f2f1da32468d7b86e57cc6b60, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.41666666
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95760083180850600
 Animator:
   serializedVersion: 3
@@ -401,3 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5bb8d66c6da1e4b8b0313e68ad5a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 82052724478534438}
+  Birth: {fileID: 8300000, guid: 8faec51f2f1da32468d7b86e57cc6b60, type: 3}
+  Hit: {fileID: 8300000, guid: b1fb16a9b66920d419aeabd5f94c89a1, type: 3}
+  Bitting: {fileID: 8300000, guid: f86ba838e01fd76438353b820764ee2b, type: 3}
+  Death: {fileID: 8300000, guid: e28028a545ca2474794af234bcf53101, type: 3}

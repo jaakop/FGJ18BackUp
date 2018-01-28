@@ -2,7 +2,7 @@
 
 public class Combat : MonoBehaviour
 {
-    public const float MaxHitDistance = 5;
+    public const float MaxHitDistance = 10;
     public Animator animator;
 	
 	public void Update ()

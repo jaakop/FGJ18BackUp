@@ -13,8 +13,15 @@ public class Mouse : MonoBehaviour
 
     private int Health = 50;
 
+    public AudioSource Player;
+    public AudioClip Birth;
+    public AudioClip Hit;
+    public AudioClip Bitting;
+    public AudioClip Death;
+
     public void Start()
     {
+        Player.PlayOneShot(Birth);
         Invoke("SetDestination", Random.Range(3, 7));
     }
 
@@ -25,7 +32,7 @@ public class Mouse : MonoBehaviour
 
         foreach (var Pipe in Pipes)
         {
-            if (!Physics.Linecast(transform.position, Pipe.transform.position, LayerMask.NameToLayer("Default")))
+            if (!Physics.Linecast(transform.position, Pipe.transform.position))
             {
                 Available.Add(Pipe.transform);
             }
@@ -69,13 +76,21 @@ public class Mouse : MonoBehaviour
             GetComponent<Rigidbody>().velocity = direction * Speed;
             Rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 
-            if (Vector3.Distance(transform.position, Destination) <= 2.0f)
+            if (Vector3.Distance(transform.position, Destination) <= 3)
             {
+                if (!Player.isPlaying)
+                {
+                    Player.clip = Bitting;
+                    Player.Play();
+                }
+                           
                 Target.GetComponent<Pipe>().ApplyDamage(10 * Time.fixedDeltaTime);
             }
 
             if (Target.GetComponent<Pipe>().isBroken())
             {
+                Player.Stop();
+
                 Target = null;
                 Invoke("SetDestination", Random.Range(3, 7));
             }
@@ -86,9 +101,17 @@ public class Mouse : MonoBehaviour
 
     public void ApplyDamage(int Damage)
     {
+        if (Health == 0)
+            return;
+
         if ((Health -= Damage) <= 0)
         {
-            Destroy(gameObject);
+            Player.PlayOneShot(Death);
+            Destroy(gameObject, 1);
+        }
+        else
+        {
+            Player.PlayOneShot(Hit);
         }
     }
 }

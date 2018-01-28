@@ -11,6 +11,8 @@ public class Pipe : MonoBehaviour
         tag = "Objective";
         GetComponent<MeshRenderer>().enabled = false;
         transform.parent.Find("Highlight").gameObject.SetActive(false);
+
+        Camera.main.transform.GetComponent<ItemHandler>().SetSteamPlaying(true);
     }
 
     public bool isBroken ()
